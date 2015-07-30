@@ -4,3 +4,11 @@ create table users (
   name text,
   picture text
 );
+
+drop table if exists activities;
+create table activities (
+  id integer primary key,
+  name text,
+  distance integer,
+  users_id integer references users(users_id)
+)

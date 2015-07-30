@@ -22,7 +22,7 @@ def auth():
 
     session["token"] = c.access_token = token
     a = c.get_athlete()  # Technically shouldn't be needed as the athlete details are returned in the oauth call
-    session["athlete"] = {"name": a.firstname, "picture": a.profile_medium}
+    session["athlete"] = {"name": a.firstname, "picture": a.profile_medium, "id": a.id}
 
     # lookup athlete in db
     cur = g.db.execute('select * from users where id = {}'.format(a.id))
