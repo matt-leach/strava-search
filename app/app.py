@@ -1,9 +1,10 @@
 import sqlite3
-from flask import Flask, request, session, g, redirect, url_for, \
-     abort, render_template, flash
+from flask import Flask, g
 from contextlib import closing
+from stravalib import Client
 
-from secret import SECRET_KEY
+from secret import SECRET_KEY, STRAVA_ID, STRAVA_SECRET
+
 
 # configuration
 DATABASE = '/tmp/strava_search.db'
@@ -34,14 +35,3 @@ def teardown_request(exception):
     db = getattr(g, 'db', None)
     if db is not None:
         db.close()
-
-
-@app.route('/')
-def show_users():
-    cur = g.db.execute('select name from users order by id desc')
-    users = [dict(name=row[0]) for row in cur.fetchall()]
-    return render_template('users.html', users=users)
-
-
-if __name__ == '__main__':
-    app.run()

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <style>
+        .profilepic { width:40px; }
+        .nav-base { background-color: #FC4C02 }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        {% if session.athlete %}
+            <img src="{{ session.athlete.picture }}">
+        {% else %}
+            {% if auth_url %}
+                <div class="container">
+                    <a href="{{ auth_url }}"><img src="{{ url_for('static', filename='StravaLogin.png') }}" style="margin-top: 100px;"/></a>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script>
+        // Initialize mobile navbar
+        $(".button-collapse").sideNav();
+    </script>
+</body>
+
+</html>
