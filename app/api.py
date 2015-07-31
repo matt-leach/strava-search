@@ -14,7 +14,10 @@ def html_activities():
     min_dist = int(request.args.get('min', 0))
 
     cur = g.db.cursor()
-    cur.execute('select * from activities where (users_id = ?) and (distance <= ?) and (distance >= ?)', [user_id, max_dist, min_dist])
+    cur.execute('select * from activities \
+                where (users_id = ?) and (distance <= ?) and (distance >= ?) \
+                order by start_time desc',
+                [user_id, max_dist, min_dist])
     activities = cur.fetchall()
     activities = [{'name': a[1], "distance": a[2]} for a in activities]
     return render_template('activities.html', activities=activities)

@@ -10,5 +10,6 @@ create table activities (
   id integer primary key,
   name text,
   distance integer,
+  start_time datetime,
   users_id integer references users(users_id)
 )

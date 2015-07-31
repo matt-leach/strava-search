@@ -37,7 +37,8 @@ def load_activities():
 
     # TODO: bulk create
     for a in activities:
-        cur.execute('insert into activities (id, name, distance, users_id) values (?, ?, ?, ?)', (a.id, a.name, int(a.distance) / 1609, users_id))
+        cur.execute('insert into activities (id, name, distance, start_time, users_id) values (?, ?, ?, ?, ?)',
+                    (a.id, a.name, int(a.distance) / 1609, a.start_date, users_id))
         g.db.commit()
     cur.close()
 
