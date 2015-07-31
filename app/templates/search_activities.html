@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+
+  <form action="#">
+    <p class="range-field">
+      <label for="min">Min distance</label>
+      <input type="range" id="min" min="0" max="20" style='max-width: 200px'/>
+    </p>
+    <p class="range-field">
+      <label for="min">Max distance</label>
+      <input type="range" id="max" min="0" max="20" style='max-width: 200px'/>
+    </p>
+    <a class="waves-effect waves-light btn" onclick='load_activities()'>Load activities</a>
+  </form>
+  <p class='result'>
+  </p>
+  <div class='activities'>
+    <ul>
+      {% for a in activities %}
+        <li>{{ a.name }} {{ a.distance }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+
+  <script>
+  function load_activities() {
+    $.get("/api/activities?min=" + $('#min').val() + "&max=" + $('#max').val(), function(data) {
+      $('.activities').html(data)
+    });
+  }
+  </script>
+  {% endblock %}

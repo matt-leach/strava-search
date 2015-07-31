@@ -2,6 +2,7 @@
 from app import app
 from auth import *
 from views import *
+from api import *
 
 
 if __name__ == "__main__":

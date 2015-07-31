@@ -3,10 +3,9 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/js/materialize.min.js"></script>
     <style>
         .profilepic { width:40px; }
         .nav-base { background-color: #FC4C02 }
@@ -21,7 +20,7 @@
                 {% if session.athlete %}
                     <li><a href="/activities/load">Load Activities</a></li>
                     <li><a href="/activities/filter">Filter Activities</a></li>
-                    <li><img class="valign" src="{{ session.athlete.picture }}" title="Logged in as {{ session.athlete.name }}"></li>
+                    <li><img class="valign profilepic" src="{{ session.athlete.picture }}" title="Logged in as {{ session.athlete.name }}"></li>
                     <li><a href="/logout">Logout</a></li>
                 {% endif %}
             </ul>
@@ -29,7 +28,7 @@
             <ul id="nav-mobile" class="side-nav">
                 {% if session.athlete %}
                     <li><a href="/logout">Logout</a></li>
-                    <li><a href="/activities/load">Load Activitiesi</a></li>
+                    <li><a href="/activities/load">Load Activities</a></li>
                 {% endif %}
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
