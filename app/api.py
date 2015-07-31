@@ -19,5 +19,5 @@ def html_activities():
                 order by start_time desc',
                 [user_id, max_dist, min_dist])
     activities = cur.fetchall()
-    activities = [{'name': a[1], "distance": a[2]} for a in activities]
+    activities = [{'name': a[1], "distance": a[2], "id": a[0]} for a in activities]
     return render_template('activities.html', activities=activities)

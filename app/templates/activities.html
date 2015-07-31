@@ -1,5 +1,5 @@
 <ul>
   {% for a in activities %}
-    <li>{{ a.name }} {{ a.distance }}</li>
+    <li><a href="https://www.strava.com/activities/{{ a.id }}/" target="_blank">{{ a.name }}</a> {{ a.distance }}</li>
   {% endfor %}
 </ul>
