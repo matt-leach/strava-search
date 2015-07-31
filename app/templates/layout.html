@@ -14,9 +14,29 @@
 </head>
 
 <body>
+  <nav class="nav-base" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Strava Search</a>
+
+            <ul class="right hide-on-med-and-down valign-wrapper">
+                {% if session.athlete %}
+                    <li><a href="/activities/load">Load Activities</a></li>
+                    <li><a href="/activities/filter">Filter Activities</a></li>
+                    <li><img class="valign" src="{{ session.athlete.picture }}" title="Logged in as {{ session.athlete.name }}"></li>
+                    <li><a href="/logout">Logout</a></li>
+                {% endif %}
+            </ul>
+
+            <ul id="nav-mobile" class="side-nav">
+                {% if session.athlete %}
+                    <li><a href="/logout">Logout</a></li>
+                    <li><a href="/activities/load">Load Activitiesi</a></li>
+                {% endif %}
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        </div>
+    </nav>
     <div class="container">
         {% if session.athlete %}
-            <img src="{{ session.athlete.picture }}">
         {% else %}
             {% if auth_url %}
                 <div class="container">

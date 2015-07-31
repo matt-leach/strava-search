@@ -14,7 +14,7 @@ def home():
     return render_template('home.html', auth_url=url)
 
 
-@app.route('/activities/list')
+@app.route('/activities')
 def activities():
     user_id = session['athlete']['id']
     cur = g.db.cursor()
