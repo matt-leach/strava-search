@@ -28,7 +28,7 @@ def activities():
 def load_activities():
     users_id = session['athlete']['id']
     c = Client(access_token=session['token'])
-    activities = list(c.get_activities(limit=300))
+    activities = list(c.get_activities())
     cur = g.db.cursor()
 
     # Delete activities before loading to prevent id clashes

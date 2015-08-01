@@ -1,5 +1,34 @@
+<div id='dates-chart'></div>
+
 <ul>
   {% for a in activities %}
     <li><a href="https://www.strava.com/activities/{{ a.id }}/" target="_blank">{{ a.name }}</a> {{ a.distance }}</li>
   {% endfor %}
 </ul>
+
+<script>
+  var data = {{ times|tojson }};
+  for (i=0; i<data.length; i++) {
+    data[i][0] = Date.parse(data[i][0])
+  }
+
+  $('#dates-chart').highcharts({
+      chart: {
+          type: 'scatter',
+          zoomType: 'x'
+      },
+      xAxis: {
+          type: 'datetime',
+          dateTimeLabelFormats: { // don't display the dummy year
+              month: '%e. %b %Y',
+          },
+          startOnTick: true,
+          endOnTick: true,
+          showLastLabel: true
+      },
+
+      series: [{
+          data: data
+      }]
+  });
+</script>

@@ -1,8 +1,8 @@
 from stravalib import Client
-
 from flask import Flask, request, session, g, render_template, jsonify
-
 from app import app
+import json
+import time
 
 
 @app.route('/api/activities', methods=['GET'])
@@ -19,5 +19,7 @@ def html_activities():
                 order by start_time desc',
                 [user_id, max_dist, min_dist])
     activities = cur.fetchall()
+    times = [[a[3], 0] for a in activities]
+    print type(times[0][0])
     activities = [{'name': a[1], "distance": a[2], "id": a[0]} for a in activities]
-    return render_template('activities.html', activities=activities)
+    return render_template('activities.html', activities=activities, times=times)
