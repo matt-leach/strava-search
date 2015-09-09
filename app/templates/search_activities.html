@@ -4,15 +4,18 @@
 
 
 
-  <form action="#">
+  <form action="#" onsubmit='load_activities()' id='filterForm'>
     <p class="range-field">
       <label for="min">Min distance</label>
-      <input type="range" id="min" min="0" max="20" style='max-width: 200px'/>
+      <input type="range" id="min" min="0" max="20" style='max-width: 200px' name='min' />
     </p>
     <p class="range-field">
       <label for="min">Max distance</label>
-      <input type="range" id="max" min="0" max="20" style='max-width: 200px'/>
+      <input type="range" id="max" min="0" max="20" style='max-width: 200px' name='max' />
     </p>
+    <div class="input-field">
+      <input placeholder="Search" id='q' type="text" name='q' >
+    </div>
     <a class="waves-effect waves-light btn" onclick='load_activities()'>Load activities</a>
   </form>
   <p class='result'>
@@ -28,7 +31,7 @@
 
   <script>
   function load_activities() {
-    $.get("/api/activities?min=" + $('#min').val() + "&max=" + $('#max').val(), function(data) {
+    $.get("/api/activities?" + $('#filterForm').serialize(), function(data) {
       $('.activities').html(data)
     });
   }
