@@ -21,6 +21,7 @@ def activities():
     cur.execute('select * from activities where users_id = ?', [user_id])
     activities = cur.fetchall()
     activities = [{'name': a[1], "distance": a[2]} for a in activities]
+    activities.reverse()
     return render_template('search_activities.html', activities=activities)
 
 
