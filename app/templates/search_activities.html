@@ -23,7 +23,7 @@
   <div class='activities'>
     <ul>
       {% for a in activities %}
-        <li>{{ a.name }} {{ a.distance }}</li>
+        {% include 'activity.html' %}
       {% endfor %}
     </ul>
   </div>

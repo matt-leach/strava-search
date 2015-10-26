@@ -2,7 +2,7 @@
 
 <ul>
   {% for a in activities %}
-    <li><a href="https://www.strava.com/activities/{{ a.id }}/" target="_blank">{{ a.name }}</a> {{ a.distance }}</li>
+    {% include 'activity.html' %}
   {% endfor %}
 </ul>
 
